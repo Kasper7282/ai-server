@@ -24,6 +24,10 @@ export default async function handler(req, res) {
     const data = await response.json();
     console.log("OpenRouter response:", JSON.stringify(data));
 
+    if (!data.choices || data.choices.length === 0) {
+      return res.status(500).json({ error: 'No choices', details: data });
+    }
+
     const text = data.choices[0].message.content;
     res.json({ reply: text });
 
