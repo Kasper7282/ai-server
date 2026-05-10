@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`
         },
         body: JSON.stringify({
-          model: 'mistralai/mistral-7b-instruct:free',
+          model: 'openai/gpt-oss-120b:free',
           messages: [{ role: 'user', content: message }]
         })
       }
