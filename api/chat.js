@@ -16,7 +16,10 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           model: 'openai/gpt-oss-120b:free',
-          messages: [{ role: 'user', content: message }]
+          messages: [
+            { role: 'system', content: 'Ты умный ассистент приложения SmartLifeBalance. Отвечай кратко и по делу.' },
+            { role: 'user', content: message }
+          ]
         })
       }
     );
