@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { message } = req.body;
+  const { message, systemPrompt } = req.body;
 
   try {
     const response = await fetch(
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: 'openai/gpt-oss-120b:free',
           messages: [
-            { role: 'system', content: 'Ты умный ассистент приложения SmartLifeBalance. Отвечай кратко и по делу.' },
+            { role: 'system', content: systemPrompt || 'Ты — персональный ИИ-помощник в приложении Smart Life Balance. Отвечай всегда на языке пользователя (преимущественно на русском). Будь дружелюбным, используй уместное количество эмодзи.' },
             { role: 'user', content: message }
           ]
         })
