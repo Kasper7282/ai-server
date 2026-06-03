@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`
         },
         body: JSON.stringify({
-          model: 'openai/gpt-oss-120b:free',
+          model: 'deepseek/deepseek-r1:free',
           messages: [
             { role: 'system', content: systemPrompt || 'Ты — персональный ИИ-помощник в приложении Smart Life Balance. Отвечай всегда на языке пользователя (преимущественно на русском). Будь дружелюбным, используй уместное количество эмодзи.' },
             { role: 'user', content: message }
