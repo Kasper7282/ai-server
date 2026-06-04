@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   const { message, systemPrompt } = req.body;
 
   const models = [
-    'openai/gpt-oss-120b:free',
-    'google/gemma-4-26b-a4b-it:free'
+    process.env.AI_MODEL_PRIMARY || 'openai/gpt-oss-120b:free',
+    process.env.AI_MODEL_FALLBACK || 'google/gemma-4-26b-a4b-it:free'
   ];
 
   for (const model of models) {
